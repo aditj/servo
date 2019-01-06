@@ -789,7 +789,8 @@ impl LayoutThread {
                 self.prepare_to_exit(response_chan);
                 return false;
             },
-            Msg::ExitNow => {
+            // Receiving the Exit message at this stage only happens when layout is undergoing a "force exit".
+             Msg::ExitNow => {
                 debug!("layout: ExitNow received");
                 self.exit_now();
                 return false;
